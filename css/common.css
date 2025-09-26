@@ -1,0 +1,321 @@
+@charset "utf-8";
+/* 공통서식
+  글꼴, 크기, 색상
+  레이아웃(헤더, 푸터)
+  링크서식
+  내비게이션
+*/
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+    font-family: cj-body-regular;
+    src: url(../font/CJONLYONENEWbodyRegular.ttf) format("truetype");
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face {
+    font-family: cj-title-bold;
+    src: url(../font/CJONLYONENEWtitleBold.ttf) format("truetype");
+    font-weight:normal;
+    font-style:normal;
+}
+
+@font-face {
+    font-family: cj-title-medium;
+    src: url(../font/CJONLYONENEWtitleMedium.ttf) format("truetype");
+    font-weight:normal;
+    font-style:normal;
+}
+
+
+:root{
+--main-font-title_bold: "cj-title-bold";
+--main-font-title_medium: "cj-title-medium";
+--main-font-body: "cj-body-regular";
+--main-font-txt: "Nanum Gothic", arial, sans-serif;
+--main-colorY:#FF9700;
+--main-colorR:#EF151E;
+--main-colorDR: #db1200;
+--main-colorB:#006ECD;
+--main-colorLB:#96C8EB;
+--sub-colorMT:#00D8CD;
+--sub-colorLMT:#67D8DD;
+--sub-colorV:#8A69D4;
+--sub-colorLV:#C19ADE;
+--main-gradient:linear-gradient(90deg,rgba(222, 128, 1, 1) 12%, rgba(221, 33, 13, 1) 50%, rgba(17, 88, 165, 1) 100%);
+--gr-color01:#1D1F22;
+--gr-color02:#4D4D4D;
+--gr-color03:#4B4D4E;
+--gr-color04:#97989A;
+--gr-color05:#97999B;
+--gr-color06:#CBCCCD;
+--gr-color07:#F4F4F6;
+--w-color:#ffffff;
+--shadow:0px 4px 10px rgba(0,0,0,0.15);
+}
+body{
+  font-family: var(--main-font-txt);
+  color:var(--gr-color01);
+}
+a{
+  color: var(--gr-color01);
+  text-decoration: none;
+}
+
+/* 상단 헤더 영역 */
+#header{
+  width: 100%; 
+  position:fixed;
+  top:0px;
+  z-index:1000;
+  transition:0.5s;  
+}
+.w_bg{
+  background-color:#ffffff;
+  box-shadow: var(--shadow);
+}
+#header>.h_menu{
+  width: 1400px;
+  margin:0 auto;
+  position: relative;
+  display:flex;
+}
+#header>.h_menu>h1{
+  width: 80px;
+  margin-top: 18px;
+}
+#header>.h_menu>h1>a>img{
+  width: 100%;
+}
+/* 네비게이션 서식 */
+#gnb{
+  width: 900px; height: 50px;
+  line-height: 50px;
+  margin: 25px 0 0 172px;
+  overflow: hidden; /* 서브메뉴 숨기기 */
+  transition: 0.5s;
+}
+#gnb:hover{height:330px;}
+#header #gnb:hover::after{
+  display:block;
+  content:"";
+  width:100%;
+  height:1px;
+  background-color: var(--gr-color07);
+  position:fixed;top:100px;left:0px;
+}
+#gnb>ul{
+  display: flex;
+}
+#gnb > ul > li{
+  text-align: center;
+  width: 180px;
+  
+}
+#gnb > ul > li > a{
+  font-family: 'cj-body-regular';
+  display:block;
+  width: 100%;
+  line-height: 50px;
+  font-size: 20px;
+  color: var(--gr-color03);
+}
+#gnb > ul > li > a:hover{
+  color: var(--gr-color01);
+  text-decoration: underline;
+}
+/* 서브메뉴 서식 */
+.sub{
+  padding: 20px 0px;
+}
+.sub a{
+  font-size:14px;
+}
+.sub a:hover{
+  text-decoration: underline;
+}
+/* 검색창 서식 */
+#search_box {
+  position: relative;
+  margin: 30px 0px 30px 22px;
+  width: 220px; height: 36px;
+  border-radius: 26px;
+  padding: 3px 3px 3px 3px; /* 테두리 두께 */
+  background: linear-gradient(90deg, #de8001, #dd210d, #1158a5);
+}
+
+#search_box input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 26px;
+  padding: 0 30px 0 10px; /* 왼쪽 10px, 오른쪽 30px로 아이콘/버튼 공간 확보 */
+  background-color: #fff;
+  box-sizing: border-box;
+}
+
+#search_box input:focus {
+  outline: none;      /* 포커스 시 검은 테두리 제거 */
+  box-shadow: none;   /* 일부 브라우저 그림자 제거 */
+}
+
+/* placeholder 스타일 */
+#search_box input::placeholder {
+  color: #999;
+}
+
+/* 검색 아이콘 위치 */
+label[for=search] {
+  position: absolute;
+  top: 52%;
+  right: 12px;
+  transform: translateY(-50%);
+}
+
+/* X 버튼 없앰*/
+#search_box input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* 하단 푸터 영역 */
+#toggle{display:none;}
+#footer{
+  position: relative;
+  width: 100%; height: 200px;
+  bottom: 0px; 
+  z-index: 1000;
+}
+.k_bg{
+  background-color:var(--gr-color01);
+}
+#footer>.f_menu{
+  width: 1226px; height: 100%;
+  margin:0px auto;
+  position: relative;
+  display:flex;
+  z-index: 1000;
+}
+.f_menu>ul{
+  display: flex;
+  justify-content: space-between;}
+.f_menu>h2{
+  display: block;
+  color: transparent;
+  width: 88px;
+  margin: 50px 0px;
+}
+.f_menu>h2>img{
+  width: 100%;
+  
+}
+.f_menu>.gnb_footer{
+  height: 16px; width: 658px;
+  line-height: 16px;
+  margin: 92px auto;
+}
+.f_menu>.gnb_footer>li{
+  text-align: left;
+  display: block;
+}
+.f_menu>.gnb_footer>li>a{
+  font-size: 16px;
+  font-weight: normal;
+  color: var(--gr-color07);
+}
+.f_menu>.gnb_footer>li:first-of-type>a{
+  font-weight: bold;
+}
+.f_menu>.gnb_footer>li>a:hover{
+  text-decoration: underline;
+}
+.f_menu>.sns{
+  width: 162px; height: 40px;
+  margin: 80px auto;
+}
+.f_menu>.sns>li{
+  display: flex;
+  width: 40px; height: 40px;
+  border-radius: 6px;
+  border: none;
+  justify-content: center;
+  align-items: center;
+}
+.f_menu>.sns>li>a:hover{
+  text-decoration: none;
+}
+.f_menu>.sns>li>a>i{
+  display: block;
+  font-size: 20px;             /* 공통 크기 조정 */
+  color: var(--gr-color07);
+  line-height: 1;    
+}
+.f_menu>.sns>li>a>.fa-instagram{font-size: 22px;}
+.f_menu>.family_btn{
+  width: 204px; height: 60px; line-height: 60px;
+  margin: 70px auto;
+  color: var(--gr-color07);
+  text-align: center;
+  font-size: 16px;
+  border-radius: 30px;
+  box-shadow: 0px 0px 7px rgba(255, 255, 255, 0.5);
+  outline: none;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+#toggle:checked + footer>.family_nav{
+  height: 220px;
+}
+.family_nav{
+  margin:0px auto;
+  position: absolute;
+  bottom: 200px;
+  width: 100%; height: 0px;
+  background-color: var(--gr-color01);
+  transition: 0.5s;
+  z-index: 999;
+  overflow: hidden;
+}
+.family_list{
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+}
+.family_list li{
+  margin: 20px auto;
+}
+.family_list dt{
+  color: var(--gr-color07);
+  display: flex;
+  font-size: 16px;
+  margin-bottom: 14px;
+  padding: 4px 2px;
+  background-color: var(--sub-colorV);
+}
+.family_list dd{
+  display:block;
+  margin-bottom: 10px;
+}
+.family_list dd>a{
+  padding: 2px 5px;
+  font-size: 14px;
+  border-radius: 10px;
+  background-color: var(--gr-color01); 
+  color: var(--gr-color07);
+}
+.family_list dd>a:hover{
+  text-decoration: underline;
+  background-color: var(--sub-colorLV)
+}
+#footer p{
+  color: var(--gr-color05);
+  position: absolute;
+  bottom: 20px;
+  font-size: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin: 0px auto;
+}
+
